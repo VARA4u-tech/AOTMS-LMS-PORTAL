@@ -1,5 +1,6 @@
 import { BookOpen, Users, Award, TrendingUp } from "lucide-react";
 import DashboardLayout from "../../components/DashboardLayout";
+import StatCard from "../../components/StatCard";
 import "../dashboards/StudentDashboard.css";
 import { instructorStats, instructorCourses } from "../../data/mockData";
 
@@ -20,57 +21,30 @@ const InstructorDashboard = () => {
         </div>
 
         <div className="stats-grid">
-          <div
-            className="stat-card"
-            style={{ "--stat-color": "#8b5cf6" } as React.CSSProperties}
-          >
-            <div className="stat-icon">
-              <BookOpen size={24} />
-            </div>
-            <div className="stat-content">
-              <div className="stat-value">{stats.activeCourses}</div>
-              <div className="stat-label">Active Courses</div>
-            </div>
-          </div>
-
-          <div
-            className="stat-card"
-            style={{ "--stat-color": "#3b82f6" } as React.CSSProperties}
-          >
-            <div className="stat-icon">
-              <Users size={24} />
-            </div>
-            <div className="stat-content">
-              <div className="stat-value">{stats.totalStudents}</div>
-              <div className="stat-label">Total Students</div>
-            </div>
-          </div>
-
-          <div
-            className="stat-card"
-            style={{ "--stat-color": "#f59e0b" } as React.CSSProperties}
-          >
-            <div className="stat-icon">
-              <TrendingUp size={24} />
-            </div>
-            <div className="stat-content">
-              <div className="stat-value">{stats.totalHoursTaught}</div>
-              <div className="stat-label">Hours Taught</div>
-            </div>
-          </div>
-
-          <div
-            className="stat-card"
-            style={{ "--stat-color": "#10b981" } as React.CSSProperties}
-          >
-            <div className="stat-icon">
-              <Award size={24} />
-            </div>
-            <div className="stat-content">
-              <div className="stat-value">{stats.averageRating}</div>
-              <div className="stat-label">Avg Rating</div>
-            </div>
-          </div>
+          <StatCard
+            icon={BookOpen}
+            value={stats.activeCourses}
+            label="Active Courses"
+            color="#8b5cf6"
+          />
+          <StatCard
+            icon={Users}
+            value={stats.totalStudents}
+            label="Total Students"
+            color="#3b82f6"
+          />
+          <StatCard
+            icon={TrendingUp}
+            value={stats.totalHoursTaught}
+            label="Hours Taught"
+            color="#f59e0b"
+          />
+          <StatCard
+            icon={Award}
+            value={stats.averageRating}
+            label="Avg Rating"
+            color="#10b981"
+          />
         </div>
 
         <div className="content-section">

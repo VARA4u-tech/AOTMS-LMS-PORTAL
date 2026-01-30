@@ -1,6 +1,7 @@
 import { Shield, Users, Database, Settings, Activity } from "lucide-react";
 import { adminStats, systemAlerts } from "../../data/mockData";
 import DashboardLayout from "../../components/DashboardLayout";
+import StatCard from "../../components/StatCard";
 import "../dashboards/StudentDashboard.css";
 
 const AdminDashboard = () => {
@@ -18,57 +19,30 @@ const AdminDashboard = () => {
         </div>
 
         <div className="stats-grid">
-          <div
-            className="stat-card"
-            style={{ "--stat-color": "#ef4444" } as React.CSSProperties}
-          >
-            <div className="stat-icon">
-              <Users size={24} />
-            </div>
-            <div className="stat-content">
-              <div className="stat-value">{stats.totalUsers}</div>
-              <div className="stat-label">Total Users</div>
-            </div>
-          </div>
-
-          <div
-            className="stat-card"
-            style={{ "--stat-color": "#8b5cf6" } as React.CSSProperties}
-          >
-            <div className="stat-icon">
-              <Shield size={24} />
-            </div>
-            <div className="stat-content">
-              <div className="stat-value">{stats.systemHealth}</div>
-              <div className="stat-label">System Health</div>
-            </div>
-          </div>
-
-          <div
-            className="stat-card"
-            style={{ "--stat-color": "#3b82f6" } as React.CSSProperties}
-          >
-            <div className="stat-icon">
-              <Database size={24} />
-            </div>
-            <div className="stat-content">
-              <div className="stat-value">{stats.storageUsed}</div>
-              <div className="stat-label">Storage Used</div>
-            </div>
-          </div>
-
-          <div
-            className="stat-card"
-            style={{ "--stat-color": "#10b981" } as React.CSSProperties}
-          >
-            <div className="stat-icon">
-              <Activity size={24} />
-            </div>
-            <div className="stat-content">
-              <div className="stat-value">{stats.activeSessions}</div>
-              <div className="stat-label">Active Sessions</div>
-            </div>
-          </div>
+          <StatCard
+            icon={Users}
+            value={stats.totalUsers}
+            label="Total Users"
+            color="#ef4444"
+          />
+          <StatCard
+            icon={Shield}
+            value={stats.systemHealth}
+            label="System Health"
+            color="#8b5cf6"
+          />
+          <StatCard
+            icon={Database}
+            value={stats.storageUsed}
+            label="Storage Used"
+            color="#3b82f6"
+          />
+          <StatCard
+            icon={Activity}
+            value={stats.activeSessions}
+            label="Active Sessions"
+            color="#10b981"
+          />
         </div>
 
         <div

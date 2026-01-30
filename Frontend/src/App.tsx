@@ -1,17 +1,38 @@
+import { Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuthStore } from "./store/authStore";
 
-// Pages
-import LandingPage from "./pages/LandingPage";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
-import RoleSelectionPage from "./pages/RoleSelectionPage";
+// Lazy Loaded Pages
+const LandingPage = lazy(() => import("./pages/LandingPage"));
+const LoginPage = lazy(() => import("./pages/LoginPage"));
+const RegisterPage = lazy(() => import("./pages/RegisterPage"));
+const RoleSelectionPage = lazy(() => import("./pages/RoleSelectionPage"));
 
-// Dashboards
-import StudentDashboard from "./pages/dashboards/StudentDashboard";
-import InstructorDashboard from "./pages/dashboards/InstructorDashboard";
-import ManagerDashboard from "./pages/dashboards/ManagerDashboard";
-import AdminDashboard from "./pages/dashboards/AdminDashboard";
+// Lazy Loaded Dashboards
+const StudentDashboard = lazy(
+  () => import("./pages/dashboards/StudentDashboard"),
+);
+const InstructorDashboard = lazy(
+  () => import("./pages/dashboards/InstructorDashboard"),
+);
+const ManagerDashboard = lazy(
+  () => import("./pages/dashboards/ManagerDashboard"),
+);
+const AdminDashboard = lazy(() => import("./pages/dashboards/AdminDashboard"));
+
+// Loading Component
+const PageLoader = () => (
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "100vh",
+    }}
+  >
+    <div className="loader">Loading...</div>
+  </div>
+);
 
 // Protected Route Component
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
@@ -74,72 +95,74 @@ const DashboardRouter = () => {
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        {/* Public Routes */}
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
 
-        {/* Protected Routes */}
-        <Route
-          path="/select-role"
-          element={
-            <ProtectedRoute>
-              <RoleSelectionPage />
-            </ProtectedRoute>
-          }
-        />
+          {/* Protected Routes */}
+          <Route
+            path="/select-role"
+            element={
+              <ProtectedRoute>
+                <RoleSelectionPage />
+              </ProtectedRoute>
+            }
+          />
 
-        {/* Dashboard - Auto-routes based on role */}
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <DashboardRouter />
-            </ProtectedRoute>
-          }
-        />
+          {/* Dashboard - Auto-routes based on role */}
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <DashboardRouter />
+              </ProtectedRoute>
+            }
+          />
 
-        {/* Role-specific routes */}
-        <Route
-          path="/student/*"
-          element={
-            <RoleRoute allowedRoles={["student"]}>
-              <StudentDashboard />
-            </RoleRoute>
-          }
-        />
+          {/* Role-specific routes */}
+          <Route
+            path="/student/*"
+            element={
+              <RoleRoute allowedRoles={["student"]}>
+                <StudentDashboard />
+              </RoleRoute>
+            }
+          />
 
-        <Route
-          path="/instructor/*"
-          element={
-            <RoleRoute allowedRoles={["instructor"]}>
-              <InstructorDashboard />
-            </RoleRoute>
-          }
-        />
+          <Route
+            path="/instructor/*"
+            element={
+              <RoleRoute allowedRoles={["instructor"]}>
+                <InstructorDashboard />
+              </RoleRoute>
+            }
+          />
 
-        <Route
-          path="/manager/*"
-          element={
-            <RoleRoute allowedRoles={["manager"]}>
-              <ManagerDashboard />
-            </RoleRoute>
-          }
-        />
+          <Route
+            path="/manager/*"
+            element={
+              <RoleRoute allowedRoles={["manager"]}>
+                <ManagerDashboard />
+              </RoleRoute>
+            }
+          />
 
-        <Route
-          path="/admin/*"
-          element={
-            <RoleRoute allowedRoles={["admin"]}>
-              <AdminDashboard />
-            </RoleRoute>
-          }
-        />
+          <Route
+            path="/admin/*"
+            element={
+              <RoleRoute allowedRoles={["admin"]}>
+                <AdminDashboard />
+              </RoleRoute>
+            }
+          />
 
-        {/* Fallback */}
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+          {/* Fallback */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 }

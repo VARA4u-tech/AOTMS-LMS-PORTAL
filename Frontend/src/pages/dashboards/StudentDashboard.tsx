@@ -11,6 +11,7 @@ import {
   Target,
 } from "lucide-react";
 import DashboardLayout from "../../components/DashboardLayout";
+import StatCard from "../../components/StatCard";
 import "./StudentDashboard.css";
 
 import { studentStats, courses, upcomingClasses } from "../../data/mockData";
@@ -30,57 +31,30 @@ const StudentDashboard = () => {
 
         {/* Stats Grid */}
         <div className="stats-grid">
-          <div
-            className="stat-card"
-            style={{ "--stat-color": "#3b82f6" } as React.CSSProperties}
-          >
-            <div className="stat-icon">
-              <BookOpen size={24} />
-            </div>
-            <div className="stat-content">
-              <div className="stat-value">{stats.enrolledCourses}</div>
-              <div className="stat-label">Enrolled Courses</div>
-            </div>
-          </div>
-
-          <div
-            className="stat-card"
-            style={{ "--stat-color": "#10b981" } as React.CSSProperties}
-          >
-            <div className="stat-icon">
-              <Award size={24} />
-            </div>
-            <div className="stat-content">
-              <div className="stat-value">{stats.completedCourses}</div>
-              <div className="stat-label">Completed</div>
-            </div>
-          </div>
-
-          <div
-            className="stat-card"
-            style={{ "--stat-color": "#f59e0b" } as React.CSSProperties}
-          >
-            <div className="stat-icon">
-              <Calendar size={24} />
-            </div>
-            <div className="stat-content">
-              <div className="stat-value">{stats.upcomingClasses}</div>
-              <div className="stat-label">Upcoming Classes</div>
-            </div>
-          </div>
-
-          <div
-            className="stat-card"
-            style={{ "--stat-color": "#8b5cf6" } as React.CSSProperties}
-          >
-            <div className="stat-icon">
-              <Target size={24} />
-            </div>
-            <div className="stat-content">
-              <div className="stat-value">{stats.certificates}</div>
-              <div className="stat-label">Certificates</div>
-            </div>
-          </div>
+          <StatCard
+            icon={BookOpen}
+            value={stats.enrolledCourses}
+            label="Enrolled Courses"
+            color="#3b82f6"
+          />
+          <StatCard
+            icon={Award}
+            value={stats.completedCourses}
+            label="Completed"
+            color="#10b981"
+          />
+          <StatCard
+            icon={Calendar}
+            value={stats.upcomingClasses}
+            label="Upcoming Classes"
+            color="#f59e0b"
+          />
+          <StatCard
+            icon={Target}
+            value={stats.certificates}
+            label="Certificates"
+            color="#8b5cf6"
+          />
         </div>
 
         {/* Main Content Grid */}
