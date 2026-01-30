@@ -109,6 +109,33 @@ body {
 }
 
 /* ============================================
+   CUSTOM SCROLLBAR & SELECTION
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-light);
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-background);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+::selection {
+  background: var(--color-brand-blue);
+  color: white;
+}
+
+/* ============================================
    TYPOGRAPHY STYLES
    ============================================ */
 
@@ -189,6 +216,14 @@ p {
   border-color: var(--color-primary-light);
   transform: translateY(-4px);
   box-shadow: var(--shadow-xl);
+}
+
+.glass-panel {
+  background: rgba(21, 30, 50, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
 }
 
 /* Buttons */
