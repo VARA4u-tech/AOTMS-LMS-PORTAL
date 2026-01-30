@@ -17,8 +17,6 @@ import { studentStats, courses, upcomingClasses } from "../../data/mockData";
 
 const StudentDashboard = () => {
   const [stats] = useState(studentStats);
-  const [enrolledCourses] = useState(courses);
-  const [upcoming] = useState(upcomingClasses);
 
   return (
     <DashboardLayout role="student">

@@ -1,15 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import {
-  GraduationCap,
-  BookOpen,
-  Users,
-  Award,
-  ArrowRight,
-  Sparkles,
-  Code,
-  Cpu,
-  Globe,
-} from "lucide-react";
+import { Users, Award, ArrowRight, Sparkles, Code, Cpu } from "lucide-react";
 import Logo from "../components/Logo";
 import "./LandingPage.css";
 

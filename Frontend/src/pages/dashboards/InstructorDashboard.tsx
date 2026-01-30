@@ -1,11 +1,4 @@
-import {
-  BookOpen,
-  Users,
-  Video,
-  TrendingUp,
-  FileText,
-  Award,
-} from "lucide-react";
+import { BookOpen, Users, Award, TrendingUp } from "lucide-react";
 import DashboardLayout from "../../components/DashboardLayout";
 import "../dashboards/StudentDashboard.css";
 import { instructorStats, instructorCourses } from "../../data/mockData";

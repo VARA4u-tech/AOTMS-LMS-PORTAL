@@ -1,11 +1,4 @@
-import {
-  BarChart3,
-  Users,
-  BookOpen,
-  FileText,
-  Award,
-  TrendingUp,
-} from "lucide-react";
+import { BarChart3, Users, BookOpen, FileText, TrendingUp } from "lucide-react";
 import { managerStats, recentActivities } from "../../data/mockData";
 import DashboardLayout from "../../components/DashboardLayout";
 import "../dashboards/StudentDashboard.css";

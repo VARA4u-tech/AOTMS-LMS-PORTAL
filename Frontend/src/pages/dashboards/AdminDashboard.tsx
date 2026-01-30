@@ -1,11 +1,4 @@
-import {
-  Shield,
-  Users,
-  Database,
-  BarChart3,
-  Settings,
-  Activity,
-} from "lucide-react";
+import { Shield, Users, Database, Settings, Activity } from "lucide-react";
 import { adminStats, systemAlerts } from "../../data/mockData";
 import DashboardLayout from "../../components/DashboardLayout";
 import "../dashboards/StudentDashboard.css";

@@ -1,18 +1,3 @@
-import {
-  Code,
-  Users,
-  Award,
-  BookOpen,
-  Terminal,
-  Database,
-  Layout,
-  Shield,
-  Smartphone,
-  Globe,
-  Server,
-  Cloud,
-} from "lucide-react";
-
 export const currentUser = {
   name: "Alex Morgan",
   email: "alex.morgan@student.aotms.edu",

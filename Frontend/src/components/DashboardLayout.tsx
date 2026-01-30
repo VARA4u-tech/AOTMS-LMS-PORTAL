@@ -16,7 +16,6 @@ import {
   Menu,
   X,
   Home,
-  Calendar,
   BarChart3,
   Shield,
   Database,

@@ -27,7 +27,7 @@ interface AuthState {
 }
 
 // Mock authentication - Replace with real API calls
-const mockLogin = async (email: string, password: string): Promise<User> => {
+const mockLogin = async (email: string, _password: string): Promise<User> => {
   // Simulate API delay
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
@@ -44,7 +44,7 @@ const mockLogin = async (email: string, password: string): Promise<User> => {
 const mockRegister = async (
   name: string,
   email: string,
-  password: string,
+  _password: string,
 ): Promise<User> => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
