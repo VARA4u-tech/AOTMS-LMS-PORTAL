@@ -1,0 +1,193 @@
+/* ============================================
+   AUTH PAGES SHARED STYLES (3D Animated)
+   ============================================ */
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 2rem;
+  background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+  perspective: 1500px; /* Essential for 3D */
+}
+
+.auth-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.auth-container {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1000px;
+  width: 100%;
+  background: rgba(30, 41, 59, 0.8);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  /* 3D Entry Animation */
+  transform-style: preserve-3d;
+  animation: entry-3d 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  opacity: 0;
+}
+
+@keyframes entry-3d {
+  from {
+    opacity: 0;
+    transform: rotateX(10deg) translateY(100px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: rotateX(0) translateY(0) scale(1);
+  }
+}
+
+/* ============================================
+   BRANDING SIDE (Left)
+   ============================================ */
+
+.auth-branding {
+  position: relative;
+  background: linear-gradient(135deg, var(--color-brand-blue) 0%, #004e8c 100%);
+  padding: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* 3D Floating Elements in Brand Section */
+.auth-branding::after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(45deg, var(--color-brand-orange), transparent);
+  border-radius: 50%;
+  top: -100px;
+  right: -100px;
+  opacity: 0.2;
+  filter: blur(60px);
+  animation: float-bg 10s infinite alternate;
+}
+
+@keyframes float-bg {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-30px, 30px);
+  }
+}
+
+.brand-content {
+  position: relative;
+  z-index: 5;
+  color: white;
+  text-align: center;
+}
+
+.brand-content h1 {
+  font-family: "Zilla Slab", serif;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+   FORM SIDE (Right)
+   ============================================ */
+
+.auth-form-container {
+  padding: 4rem;
+  background: var(--color-surface);
+}
+
+.auth-header {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.auth-header h2 {
+  font-family: "Zilla Slab", serif;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-primary);
+}
+
+/* Form Inputs */
+.form-group label {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-secondary);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.input-with-icon {
+  position: relative;
+  transition: transform 0.2s;
+}
+
+.input-with-icon:focus-within {
+  transform: translateY(-2px);
+}
+
+.input-with-icon input {
+  width: 100%;
+  background: #0f172a;
+  border: 1px solid var(--color-border);
+  padding: 0.875rem 1rem 0.875rem 3rem;
+  border-radius: var(--radius-md);
+  color: white;
+  font-family: "Inter", sans-serif;
+  transition: all 0.2s;
+}
+
+.input-with-icon input:focus {
+  border-color: var(--color-brand-blue);
+  box-shadow: 0 0 0 3px rgba(0, 112, 188, 0.2);
+}
+
+.input-with-icon svg {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+}
+
+.btn-block {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 900px) {
+  .auth-container {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+  }
+  .auth-branding {
+    display: none;
+  }
+  .auth-form-container {
+    padding: 3rem 2rem;
+  }
+}

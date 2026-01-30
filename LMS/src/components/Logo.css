@@ -1,0 +1,150 @@
+/* Logo Component Styles */
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: "Zilla Slab", serif; /* Matching the Slab Serif font */
+  user-select: none;
+}
+
+/* --- Icon Section --- */
+.logo-icon-container {
+  position: relative;
+  width: 3.5rem;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logo-circle-outer {
+  position: absolute;
+  inset: 0;
+  border: 2px dashed var(--color-brand-orange);
+  border-radius: 50%;
+  animation: spin-slow 20s linear infinite;
+}
+
+.logo-circle-inner {
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(0, 112, 188, 0.3);
+  border-radius: 50%;
+}
+
+.logo-brackets {
+  position: relative;
+  z-index: 2;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--color-brand-blue);
+  display: flex;
+  gap: 1px;
+  letter-spacing: -2px;
+}
+
+.bracket-center {
+  color: var(--color-brand-blue);
+  opacity: 0.8;
+  font-weight: 400;
+}
+
+/* --- Text Section --- */
+.logo-text-container {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.logo-title-row {
+  display: flex;
+  gap: 0.4rem;
+  font-weight: 800; /* Extra Bold */
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.text-academy {
+  color: var(--color-brand-blue);
+}
+
+.text-tech {
+  color: var(--color-brand-orange);
+}
+
+.logo-tagline {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(
+    --color-brand-blue
+  ); /* Or dark grey if preferred, but logo looks blue */
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+  padding-top: 4px;
+  border-top: 2px solid #334155; /* Underline effect */
+  text-align: justify;
+  text-align-last: justify;
+  width: 100%;
+}
+
+/* --- Sizes --- */
+.logo-sm .logo-icon-container {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.logo-sm .logo-title-row {
+  font-size: 1rem;
+}
+.logo-sm .logo-tagline {
+  font-size: 0.45rem;
+  border-top-width: 1px;
+}
+
+.logo-lg .logo-icon-container {
+  width: 5rem;
+  height: 5rem;
+}
+.logo-lg .logo-title-row {
+  font-size: 2.25rem;
+}
+.logo-lg .logo-tagline {
+  font-size: 0.9rem;
+  margin-top: 6px;
+  padding-top: 6px;
+}
+
+.logo-xl .logo-icon-container {
+  width: 8rem;
+  height: 8rem;
+}
+.logo-xl .logo-title-row {
+  font-size: 3.5rem;
+}
+.logo-xl .logo-tagline {
+  font-size: 1.25rem;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top-width: 3px;
+}
+
+/* --- Variants --- */
+.text-dark .logo-tagline {
+  border-top-color: #cbd5e1;
+}
+
+/* Animations */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
